@@ -34,14 +34,18 @@ class Window:
       self.window.update()
 
    def display_board(self):
+      # self.canvas.delete("all")
       color = None
       for i in range(5):
          for j in range(5):
-            if(self.board.get_board()[i][j] == 0): color = "#f3f3f3"
-            elif(self.board.get_board()[i][j] == 1): color = "#2288ba"
-            else: color = "#865f3e"
+            if(self.board.get_board()[i][j] == 0): color = "#f3f3f3"    # Rien
+            elif(self.board.get_board()[i][j] == 1): color = "#2288ba"  # Bijoux
+            elif(self.board.get_board()[i][j] == 2): color = "#865f3e"  # Poussière
+            elif(self.board.get_board()[i][j] == 3): color = "#8eba4f"  # Poussière + Bijoux
+
             _rect = self.canvas.create_rectangle(i*100, j*100, (i+1)*100, (j+1)*100, fill=color)
       
+      # On affiche le robot
       _rect = self.canvas.create_rectangle(
          self.board.get_robot().x*100+25,
          self.board.get_robot().y*100+25,
@@ -50,6 +54,7 @@ class Window:
          fill="#000"
       )
 
+      # On update le canvas pour que les nouvelles modifs soient prises en compte
       self.update()
 
    def get_window(self):
