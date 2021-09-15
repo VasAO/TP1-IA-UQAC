@@ -1,16 +1,12 @@
-
 from Board import Board
 from Window import Window
+from Robot import Robot
+import time
 
-board = Board()
-w = Window(500, 500, False, "TP1 IA", board)
-w.create_window()
+r = Robot()
+b = Board(r)
+w = Window(500, 500, False, "TP1 IA", b)
+w.display_board()
+
 
 w.mainloop()
-
-# C = Canvas(w, bg="blue", height=250, width=300)
-
-# coord = 10, 50, 240, 210
-# arc = C.create_arc(coord, start=0, extent=150, fill="red")
-
-# C.pack()

@@ -10,7 +10,8 @@ class Board:
 
    La répartition des éléments dans les pièces est faite de manière pseudo-aléatoire.
    """
-   def __init__(self):
+   def __init__(self, robot):
+      self.robot = robot
       self.board = [[0 for j in range(5)] for i in range(5)]
       self.init_board()
 
@@ -18,3 +19,9 @@ class Board:
       for i in range(5):
          for j in range(5):
             self.board[i][j] = random.randint(0, 2)
+
+   def get_board(self):
+      return self.board
+
+   def get_robot(self):
+      return self.robot
