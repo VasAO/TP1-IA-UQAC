@@ -5,7 +5,7 @@ class Window:
    La classe Window permet d'afficher le résultat de l'environement à un instant t
    L'affichage est géré avec Tkinter, une librairie permettant de créer et manipuler des fenêtres en Python
    """
-   def __init__(self, width, height, resizable, title, board):
+   def __init__(self, width, height, resizable, title, board, robot):
       self.width = width
       self.height = height
       self.resizable = resizable
@@ -13,6 +13,7 @@ class Window:
       self.window = None
       self.canvas = None
       self.board = board
+      self.robot = robot
       self.create_window()
       self.create_canvas()
 
@@ -47,10 +48,10 @@ class Window:
       
       # On affiche le robot
       _rect = self.canvas.create_rectangle(
-         self.board.get_robot().x*100+25,
-         self.board.get_robot().y*100+25,
-         (self.board.get_robot().x*100)+75,
-         (self.board.get_robot().y*100)+75,
+         self.robot.x*100+25,
+         self.robot.y*100+25,
+         (self.robot.x*100)+75,
+         (self.robot.y*100)+75,
          fill="#000"
       )
 
