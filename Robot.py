@@ -1,5 +1,5 @@
 import random
-
+import math
 
 class Robot:
     """
@@ -26,3 +26,34 @@ class Robot:
 
     def move_left(self):
         self.x = self.x - 1
+
+    def __get_not_empty_room(self):
+        not_empty_room = []
+        for i in range(5):
+            for j in range(5):
+                if(self.board.get_board()[i][j] != 0):  # Si la pièce n'est pas vide
+                    not_empty_room.append([i, j])
+
+        return not_empty_room
+
+    def select_nearest_not_empty_room(self):
+        not_empty_room = self.__get_not_empty_room()
+        if(len(not_empty_room) == 0): return -1
+        else:
+            for idx, room in enumerate(not_empty_room):
+                _min = math.sqrt(math.pow(room[0] - self.x, 2) + math.pow(room[1] - self.y, 2))
+                if(idx == 0 or _min < min): 
+                    min = _min
+                    index = idx
+
+        return not_empty_room[index]
+
+    def reach_selected_room(self, room_coord):
+        # Info : Bug ici lors du déplacement vers la case la plus proche
+        if(room_coord == [self.x, self.y] or room_coord == -1): return
+        else:
+            if(room_coord[0] < self.x): self.move_left()
+            else: self.move_right()
+
+            if(room_coord[1] < self.y): self.move_up()
+            else: self.move_down()
