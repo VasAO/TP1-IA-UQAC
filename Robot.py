@@ -50,6 +50,7 @@ class Robot:
 
     def reach_selected_room(self, room_coord):
         # Info : Bug ici lors du déplacement vers la case la plus proche
+        # Todo: Ajouter l'énergie
         if(room_coord == [self.x, self.y] or room_coord == -1): return
         else:
             if(room_coord[0] < self.x): self.move_left()
@@ -57,3 +58,5 @@ class Robot:
 
             if(room_coord[1] < self.y): self.move_up()
             else: self.move_down()
+
+    # Todo: Ajouter le fait de nettoiyer la pièce ou de ramasser le bijou ou les deux
